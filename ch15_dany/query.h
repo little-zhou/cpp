@@ -1,0 +1,31 @@
+#ifndef _QUERY_H
+#define _QUERY_H
+
+#include <string>
+using std::string;
+
+#include "queryresult.h"
+#include "query_base.h"
+#include "wordquery.h"
+
+class TextQuery;
+
+class Query
+{
+    friend Query operator~(const Query&);
+    friend Query operator|(const Query&, const Query&);
+    friend Query operator&(const Query &, const Query &);
+public:
+    Query(const string&);
+    QueryResult eval(const TextQuery &t) const {q->eval(t);};
+    string rep() const {return q->rep();}
+private:
+    Query(shared_ptr<QueryBase> query): q(query){}
+    shared_ptr<QueryBase> q;
+};
+
+ostream &operator<<(ostream &os, const Query &query);
+
+inline Query::Query(const string &s) : q(new WordQuery(s)) {}
+
+#endif

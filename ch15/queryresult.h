@@ -27,7 +27,6 @@ public:
     set<TextQuery::line_no>::iterator begin(){return lines->begin();}
     set<TextQuery::line_no>::iterator end(){return lines->end();}
     shared_ptr<vector<string>> get_file() {return file;}
-
 private:
     string sought;
     shared_ptr<set<TextQuery::line_no>> lines;

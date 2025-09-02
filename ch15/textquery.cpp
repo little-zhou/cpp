@@ -37,6 +37,7 @@ TextQuery::TextQuery(ifstream &is) : file(new vector<string>)
         string word;
         while (line >> word)
         {
+            std::cout << " Word " + word << std::endl;
             auto p = handlePunct(word);
             for (auto w : *p)
             {
@@ -45,6 +46,18 @@ TextQuery::TextQuery(ifstream &is) : file(new vector<string>)
                     lines.reset(new set<line_no>);
                 lines->insert(n);
             }
+        }
+    }
+
+    for (const auto &pair : wm)
+    {
+        const std::string &word = pair.first;                          // key
+        const std::shared_ptr<std::set<line_no>> &lines = pair.second; // value
+
+        std::cout << "word: " << word << "\n";
+        for (auto ln : *lines)
+        {
+            std::cout << "    line: " << ln << "\n";
         }
     }
 }
