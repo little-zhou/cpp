@@ -1,5 +1,6 @@
 #include "queryresult.h"
 #include "textquery.h"
+#include "query.h"
 
 #include <fstream>
 using std::ifstream;
@@ -7,11 +8,29 @@ using std::ifstream;
 #include <iostream>
 using std::cout;
 
+// int main()
+// {
+//     ifstream fin("test.txt");
+//     TextQuery text(fin);
+//     // auto res = text.query("Daddy");
+
+//     Query q = Query("fiery") & Query("bird") | Query("wind");
+
+//     auto result = q.eval(text);
+
+//     print(cout, result);
+
+//     // print(cout, res) << std::endl;
+//     return 0;
+// }
+
+// main.cpp
+#include "notquery.h"
+#include "query.h"
+
 int main()
 {
-    ifstream fin("test.txt");
-    TextQuery text(fin);
-    auto res = text.query("Daddy");
-    print(cout, res) << std::endl;
+    Query q("example");
+    NotQuery nq(q); // 使用 NotQuery
     return 0;
 }

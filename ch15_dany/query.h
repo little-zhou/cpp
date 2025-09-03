@@ -17,7 +17,7 @@ class Query
     friend Query operator&(const Query &, const Query &);
 public:
     Query(const string&);
-    QueryResult eval(const TextQuery &t) const {q->eval(t);};
+    QueryResult eval(const TextQuery &t) const {return q->eval(t);};
     string rep() const {return q->rep();}
 private:
     Query(shared_ptr<QueryBase> query): q(query){}
