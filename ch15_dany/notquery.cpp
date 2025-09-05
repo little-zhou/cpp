@@ -1,6 +1,3 @@
-#ifndef _NOTQUERY_H
-#define _NOTQUERY_H
-
 #include "notquery.h"
 #include "queryresult.h"
 #include "query.h"
@@ -25,5 +22,3 @@ QueryResult NotQuery::eval(const TextQuery &text) const
 
     return QueryResult(rep(), ret_lines, result.get_file());
 }
-
-#endif

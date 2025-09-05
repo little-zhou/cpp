@@ -30,7 +30,10 @@ using std::cout;
 
 int main()
 {
-    Query q("example");
-    NotQuery nq(q); // 使用 NotQuery
+    ifstream fin("test.txt");
+    TextQuery text(fin);
+    Query q = ~Query("example");
+    auto result = q.eval(text);
+    print(cout, result);
     return 0;
 }
